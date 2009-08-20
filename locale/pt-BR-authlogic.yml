@@ -1,0 +1,22 @@
+pt-BR:
+  authlogic:
+    error_messages:
+      login_blank: "não pode ficar em branco"
+      login_not_found: "não é valido"
+      login_invalid: "não é valido" 
+      consecutive_failed_logins_limit_exceeded: "limite de tentativas de login excedido"
+      email_invalid: "não é valido" 
+      password_blank: "não pode ficar em branco"
+      password_invalid: "não é valida"
+      not_active: "sua conta não está ativa"
+      not_confirmed: "sua conta não foi confirmada"
+      not_approved: "sua conta não foi aprovada"
+      no_authentication_details: "Você não forneceu nenhum detalhe para autenticação"
+    models:
+      user_session: UserSession 
+    attributes:
+      user_session: 
+        login: "Login"
+        email: "E-mail"
+        password: "Senha"
+        remember_me: "Lembrar-me"
