@@ -1,0 +1,5 @@
+== app-template
+
+Template when generating a new Rails application
+
+Copyright (c) 2009 Jésus Lopes, released under the MIT license
