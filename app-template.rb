@@ -90,7 +90,8 @@ if yes?("Use Authlogic for authentication?")
   file "config/locales/pt-BR-authlogic.yml", open("http://github.com/jtadeulopes/app-template/raw/master/locale/pt-BR-authlogic.yml").read
 end
 gem "searchlogic" if yes?(" Install gem Searchlogic? (yes or no)")
-gem "brazilian-rails" if yes?(" Install gem brazilian-rails? (yes or no)")
+gem "brazilian-rails", :version => "2.1.8" if yes?(" Install gem brazilian-rails? (yes or no)")
+gem "rack", :version => "1.0.0" if yes?("Install gem rack? (yes or no) - Require for Locaweb")
 
 rake "gems:install", :sudo => true
 rake "gems:install", :env => "test", :sudo => true
