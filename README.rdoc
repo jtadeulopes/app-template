@@ -1,5 +1,13 @@
 == app-template
 
-Template when generating a new Rails application
+Template para gerar uma nova aplicação Rails.
+
+Visualizar o arquivo app-template.rb para maiores detalhes.
+
+=== Usando
+
+  git clone git://github.com/jtadeulopes/app-template.git
+
+  rails nomeapp -m app-template/app-template.rb
 
 Copyright (c) 2009 Jésus Lopes, released under the MIT license
