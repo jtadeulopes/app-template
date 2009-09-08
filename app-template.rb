@@ -48,8 +48,9 @@ plugin "nifty-generators", :git => "git://github.com/jtadeulopes/nifty-generator
 plugin "booleanize", :git => "git://github.com/cassiomarques/booleanize.git" if yes?("Install plugin booleanize? (yes or no)")
 plugin "i18n_label", :git => "git://github.com/iain/i18n_label.git" if yes?("Install plugin i18n_label? (yes or no)")
  
-# define o locale default
+# define o locale default e o time zone
 environment %(config.i18n.default_locale = "pt-BR")
+environment %(config.time_zone = "Brasilia")
  
 # rspec
 if USE_RSPEC
@@ -88,6 +89,10 @@ end
 if yes?("Use Authlogic for authentication?") 
   gem "authlogic" 
   file "config/locales/pt-BR-authlogic.yml", open("http://github.com/jtadeulopes/app-template/raw/master/locale/pt-BR-authlogic.yml").read
+end
+if yes?("Install gem Formtastic? (yes or no)")
+  gem "justinfrench-formtastic", :lib => 'formtastic', :source  => 'http://gems.github.com' 
+  file "config/locales/pt-BR-formtastic.yml", open("http://github.com/jtadeulopes/app-template/raw/master/locale/pt-BR-formtastic.yml").read
 end
 gem "searchlogic" if yes?(" Install gem Searchlogic? (yes or no)")
 gem "brazilian-rails", :version => "2.1.8" if yes?(" Install gem brazilian-rails? (yes or no)")
