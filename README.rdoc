@@ -1,13 +1,58 @@
-== app-template
+= app-template
 
 Template para gerar uma nova aplicação Rails.
 
-Visualizar o arquivo app-template.rb para maiores detalhes.
+== Conteúdo
 
-=== Usando
+* Inicia um novo repositório GIT
+* Cria arquivo .gitignore
+* Cria copias do arquivos config/database.yml
+* Remove arquivos desnecessários
+* Baixa arquivo locale/pt-BR.yml
+* Gera um controller home e define como map.root
+
+=== Plugins
+
+* paperclip
+* jrails
+* restful_authentication
+* nifty-generators (http://github.com/jtadeulopes/nifty-generators)
+* booleanize
+* i18n_label
+
+=== Testes
+
+* rspec
+* remarkable
+* baixa arquivo config/pt-BR-remarkable.yml
+* remarkable_paperclip
+* remarkable_extensions
+* remarkable_authlogic
+* machinist
+
+=== Gems
+
+* authlogic
+* formtastic
+* baixa locale/pt-BR-formtastic.yml
+* searchlogic
+* brazilian-rails
+* rack (requer para hospedagem na Locaweb)
+
+=== Capistano
+
+* capify!
+* baixa receita de http://github.com/jtadeulopes/app-template/raw/master/deploy/deploy.rb
+
+== Usando
 
   git clone git://github.com/jtadeulopes/app-template.git
 
-  rails nomeapp -m app-template/app-template.rb
+  rails my_app_rails -m app-template/app-template.rb
+
+OU
+
+  rails my_app_rails -m http://github.com/jtadeulopes/app-template/raw/master/app-template.rb
+
 
 Copyright (c) 2009 Jésus Lopes, released under the MIT license
