@@ -104,7 +104,7 @@ if yes?("Use Authlogic for authentication? (yes or no)")
   file "config/locales/pt-BR-authlogic.yml", open("http://github.com/jtadeulopes/app-template/raw/master/locale/pt-BR-authlogic.yml").read
 end
 if yes?("Install gem Formtastic? (yes or no)")
-  gem "justinfrench-formtastic", :lib => 'formtastic', :source  => 'http://gems.github.com' 
+  gem "formtastic", :source  => 'http://gemcutter.org' 
   file "config/locales/pt-BR-formtastic.yml", open("http://github.com/jtadeulopes/app-template/raw/master/locale/pt-BR-formtastic.yml").read
 end
 gem "searchlogic"                           if yes?(" Install gem Searchlogic? (yes or no)")
