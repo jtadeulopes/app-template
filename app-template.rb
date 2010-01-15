@@ -11,6 +11,7 @@ config/database.yml
 config/database.yml.production
 db/*.sqlite3
 .DS_Store
+public/images/upload
 TXT
  
 # cria copias do arquivo database.yml
@@ -39,7 +40,6 @@ if USE_PAPERCLIP = yes?("Install plugin paperclip? (yes or no)")
   plugin "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 end
 plugin "jrails", :git => "git://github.com/aaronchi/jrails.git"                                     if yes?("Install plugin jrails? (yes or no)")
-plugin "restful_authentication", :git => "git://github.com/technoweenie/restful-authentication.git" if yes?("Install plugin restful-authentication? (yes or no)")
 plugin "nifty-generators", :git => "git://github.com/jtadeulopes/nifty-generators.git"              if yes?("Install plugin nifty-generators? (yes or no)")
 plugin "booleanize", :git => "git://github.com/cassiomarques/booleanize.git"                        if yes?("Install plugin booleanize? (yes or no)")
 plugin "i18n_label", :git => "git://github.com/iain/i18n_label.git"                                 if yes?("Install plugin i18n_label? (yes or no)")
@@ -56,6 +56,7 @@ environment %(config.time_zone = "Brasilia")
 if USE_RSPEC = yes?("Do you want to use RSpec for testing? (yes or no)")
   append_file TEST_FILE, %(\n\nconfig.gem "rspec", :lib => false)
   append_file TEST_FILE, %(\nconfig.gem "rspec-rails", :lib => false)
+  append_file TEST_FILE, %(\nconfig.gem "cucumber", :lib => false)
 end
 
 if USE_RSPEC
@@ -89,7 +90,20 @@ if USE_RSPEC
     # cria arquivo blueprint
     file "spec/blueprints.rb", <<-TXT
 require 'machinist/active_record'
+#
 # blueprints
+#
+=begin
+User.blueprint do
+  username { Faker::Internet.user_name }
+  email { Faker::Internet.email }
+  password 'benrocks'
+  password_confirmation 'benrocks'
+  password_salt { Authlogic::Random.hex_token }
+  crypted_password { Authlogic::CryptoProviders::Sha512.encrypt("benrocks" + Authlogic::Random.hex_token) }
+  persistence_token { Authlogic::Random.friendly_token }
+end
+=end
     TXT
 
   end
@@ -109,7 +123,7 @@ if yes?("Install gem Formtastic? (yes or no)")
 end
 gem "searchlogic"                           if yes?(" Install gem Searchlogic? (yes or no)")
 gem "brazilian-rails", :version => "2.1.8"  if yes?(" Install gem brazilian-rails? (yes or no)")
-gem "rack", :version => "1.0.0"             if yes?("Install gem rack? (yes or no) - Require for Locaweb")
+gem "rack", :version => "1.0.1"             if yes?("Install gem rack? (yes or no) - Require for Locaweb")
 
 rake "gems:install", :sudo => true
 rake "gems:install", :env => "test", :sudo => true
